@@ -1,0 +1,226 @@
+{
+	"name": "CopyTargetstoSQL",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_yf3",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "data//ResellerSalesTargets.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "stage.Targets"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Year",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Year",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EmployeeID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "EmployeeID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "M01",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "M01",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "M02",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "M02",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "M03",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "M03",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "M04",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "M04",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "M05",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "M05",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "M06",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "M06",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "M07",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "M07",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "M08",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "M08",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "M09",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "M09",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "M10",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "M10",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "M11",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "M11",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "M12",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "M12",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_yf3",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_yf3",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
