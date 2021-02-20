@@ -1,0 +1,16 @@
+{
+	"name": "LoadResellers",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "osdwsql",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "load",
+			"table": "Resellers"
+		}
+	}
+}
