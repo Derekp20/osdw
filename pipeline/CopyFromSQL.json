@@ -114,11 +114,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"table": {
-				"type": "string"
-			}
-		},
 		"annotations": []
 	}
 }
