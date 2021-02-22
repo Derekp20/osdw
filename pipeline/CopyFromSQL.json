@@ -44,13 +44,25 @@
 				"inputs": [
 					{
 						"referenceName": "SourceSQL",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"tablename": {
+								"value": "@pipeline().parameters.table",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "FileinADSL",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"FileName": {
+								"value": "concat(@pipeline().parameters.table,\".csv\")",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
