@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "select name\nfrom sys.tables",
+						"sqlReaderQuery": "select TABLE_SCHEMA, TABLE_NAME\nfrom INFORMATION_SCHEMA.TABLES\nWHERE TABLE_TYPE = 'BASE TABLE'",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -91,7 +91,11 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"tablename": {
-											"value": "@item().name",
+											"value": "@item().TABLE_NAME",
+											"type": "Expression"
+										},
+										"schemaname": {
+											"value": "@item().TABLE_SCHEMA",
 											"type": "Expression"
 										}
 									}
@@ -103,7 +107,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"FileName": {
-											"value": "@concat(item().name,'.csv')",
+											"value": "@concat(item().TABLE_SCHEMA,'_',item().TABLE_NAME,'.csv')",
 											"type": "Expression"
 										}
 									}
@@ -114,11 +118,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"tablelist": {
-				"type": "object"
-			}
-		},
 		"annotations": []
 	}
 }
