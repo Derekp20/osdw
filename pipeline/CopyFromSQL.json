@@ -59,7 +59,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"FileName": {
-								"value": "concat(@pipeline().parameters.table,\".csv\")",
+								"value": "@concat(pipeline().parameters.table,'.csv')",
 								"type": "Expression"
 							}
 						}
